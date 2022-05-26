@@ -20,7 +20,7 @@ namespace neural
 
         for (auto i = 0; i < size; ++i)
         {
-            auto newNeuron = std::make_unique<Neuron>(i);
+            auto newNeuron = std::make_unique<Neuron>(i, mSigmoid);
             if (previousLayer)
             {
                 for (auto& previousNeuron : *previousLayer)
@@ -186,7 +186,7 @@ namespace neural
 					auto& input = neuron->getInput(inputIndex);
 					input.setWeight(input.getWeight() + mWeightDeltas[layerIndex][neuronIndex][inputIndex] * learningRate);
 				}
-//				neuron->setBias(mBiasDeltas[layerIndex][neuronIndex]);
+				neuron->setBias(mBiasDeltas[layerIndex][neuronIndex]);
 			}
 		}
 

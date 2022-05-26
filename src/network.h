@@ -1,6 +1,7 @@
 #pragma once
 
 #include <neuron.h>
+#include <neuralfunctions.h>
 
 namespace neural
 {
@@ -18,7 +19,7 @@ namespace neural
         };
 
     public:
-        Network() = default;
+        Network() : mSigmoid(-10.f, 10.f, 256) { }
         virtual ~Network() = default;
 
         void addLayer(std::size_t size);
@@ -32,6 +33,7 @@ namespace neural
 
     private:
         std::vector<Layer> mLayers;
+        Sigmoid mSigmoid;
     };
 
 }
