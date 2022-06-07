@@ -17,10 +17,10 @@ namespace neural
         for (auto& input : mInputs)
 			rawValue += input->getValue();
 		rawValue += mBias;
-        mValue = mSigmoid.get(rawValue);
-		mDerivativeValue = mSigmoid.getDerivative(rawValue);
-//        mValue = sigmoid(rawValue);
-//        mDerivativeValue = sigmoidDerivative(rawValue);
+//        mValue = mSigmoid.get(rawValue);
+//		mDerivativeValue = mSigmoid.getDerivative(rawValue);
+        mValue = sigmoid(rawValue);
+        mDerivativeValue = sigmoidDerivative(rawValue);
     }
 
 
