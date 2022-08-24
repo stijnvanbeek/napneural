@@ -1,6 +1,7 @@
 #pragma once
 
 #include <neuraltypes.h>
+#include <neuralfunctions.h>
 #include <link.h>
 #include <vector>
 
@@ -10,14 +11,13 @@ namespace neural
     class Neuron
     {
     public:
-      struct Delta
-      {
-        std::vector<Value> mWeights;
-        Value mBias;
-      };
+        struct Delta {
+            std::vector<Value> mWeights;
+            Value mBias;
+        };
 
     public:
-        Neuron(size_t neuronId) : mId(neuronId) { }
+        Neuron(size_t neuronId, Sigmoid& sigmoid) : mId(neuronId), mSigmoid(sigmoid) { }
         virtual ~Neuron() = default;
 
         void addOutput(Neuron& output);
@@ -46,6 +46,7 @@ namespace neural
         Value mValue = 0.f;
 		Value mDerivativeValue = 0.f;
 		size_t mId = 0;
+		Sigmoid& mSigmoid;
     };
 
 }
